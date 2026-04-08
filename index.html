@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capminds Appointment Scheduling</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="top-header">
+        <div class="logo-container">
+            <img src="assets/frame.png" alt="Logo" class="logo-icon"></span>
+            <span class="logo-text">CAPMINDS</span> <small>by Rithik Mathew</small>
+        </div>
+        <button id="btn-book-appointment" class="btn-primary">
+            <span class="icon">+</span> Book Appointment
+        </button>
+    </header>
+
+    <div class="app-body">
+        <aside class="sidebar" id="app-sidebar">
+            <div class="sidebar-header">
+                <button class="toggle-btn" id="sidebar-toggle" title="Collapse">&laquo;</button>
+            </div>
+            <div class="nav-links">
+                <button id="nav-calendar" class="nav-btn active" title="Calendar">
+                    <span class="nav-icon">📅</span> 
+                    <span class="nav-label">Calendar</span>
+                </button>
+                <button id="nav-dashboard" class="nav-btn" title="Dashboard">
+                    <span class="nav-icon">🗂️</span> 
+                    <span class="nav-label">Dashboard</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="view-calendar" class="view-section active fade-in">
+                <div class="surface-card calendar-wrapper">
+                    <div class="calendar-header">
+                        <div class="date-controls">
+                            <button id="btn-prev-month" class="btn-icon">&lt;</button>
+                            <div class="current-date-display">
+                                <span class="calendar-icon">📅</span> 
+                                <span id="current-month-display">January 01, 2026</span>
+                            </div>
+                            <button id="btn-next-month" class="btn-icon">&gt;</button>
+                        </div>
+                        <div class="view-controls">
+                            <button class="btn-outline" id="btn-today">Today</button>
+                            <div class="custom-select-wrapper">
+                                <select class="btn-outline select-view" id="month-selector">
+                                    <option value="0">January</option>
+                                    <option value="1">February</option>
+                                    <option value="2">March</option>
+                                    <option value="3">April</option>
+                                    <option value="4">May</option>
+                                    <option value="5">June</option>
+                                    <option value="6">July</option>
+                                    <option value="7">August</option>
+                                    <option value="8">September</option>
+                                    <option value="9">October</option>
+                                    <option value="10">November</option>
+                                    <option value="11">December</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doctor-filter-tabs" id="doctor-filters">
+                        <button class="doc-tab active" data-doctor="All">All Doctors</button>
+                        <button class="doc-tab" data-doctor="James Marry">Dr. James Marry (General Practitioner)</button>
+                        <button class="doc-tab" data-doctor="Harit Chaturvedi">Dr. Harit Chaturvedi (Oncology)</button>
+                        <button class="doc-tab" data-doctor="Mammen Chandy">Dr. Mammen Chandy (Haematology)</button>
+                        <button class="doc-tab" data-doctor="Sarah Smith">Dr. Sarah Smith (Pediatrician)</button>
+                        <button class="doc-tab" data-doctor="Deepak Agrawal">Dr. Deepak Agrawal (Neurosurgeon)</button>
+                        <button class="doc-tab" data-doctor="Vikrant Manhas">Dr. Vikrant Manhas (Orthopaedics)</button>
+                    </div>
+                    <div id="calendar-grid" class="calendar-grid">
+                        </div>
+                </div>
+            </section>
+
+            <section id="view-dashboard" class="view-section hidden fade-in">
+                <div class="dashboard-wrapper">
+                    <h2 class="page-title">Practice Dashboard</h2>
+                    
+                    <div class="surface-card filter-bar">
+                        <div class="filter-bar">
+                        <div class="filter-input-group">
+                            <span class="icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            </span>
+                            <input type="text" id="search-patient" placeholder="Patient Search">
+                        </div>
+                        
+                        <div class="filter-input-group">
+                            <span class="icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            </span>
+                            <input type="text" id="search-doctor" placeholder="Doctor Search">
+                        </div>
+
+                        <div class="filter-input-group date-box">
+                            <span class="icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            </span>
+                            <input type="date" id="filter-date-start">
+                        </div>
+                        
+                        <span class="separator">—</span>
+                        
+                        <div class="filter-input-group date-box">
+                            <span class="icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            </span>
+                            <input type="date" id="filter-date-end">
+                        </div>
+                        
+                        <button id="btn-apply-filters" class="btn-primary">Apply Filters</button>
+                    </div>
+                    </div>
+                    
+                    <div class="surface-card table-card">
+                        <div class="table-header-section">
+                            <h3 class="table-title">Appointment Details</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="appointments-table">
+                                <thead>
+                                    <tr>
+                                        <th>Patient</th>
+                                        <th>Doctor</th>
+                                        <th>Hospital</th>
+                                        <th>Specialty</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table-body">
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="appointment-modal" class="modal-overlay hidden">
+        <div class="modal-content scale-in">
+            <div class="modal-header">
+                <h2>Schedule Appointment</h2>
+                <button id="btn-close-modal" class="close-btn">&times;</button>
+            </div>
+            <form id="appointment-form">
+                <input type="hidden" id="appt-id">
+                <div class="form-grid">
+                    
+                    <div class="input-group">
+                        <label>Patient Name</label>
+                        <div class="input-with-icon">
+                            <span class="input-icon">👥</span>
+                            <input type="text" id="appt-patient" placeholder="Enter patient name" required>
+                        </div>
+                        <span class="error-message">Patient name is required</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Doctor Name</label>
+                        <div class="input-with-icon">
+                            <span class="input-icon">👨‍⚕️</span>
+                            <input list="doctors-list" id="appt-doctor" placeholder="Search or select doctor..." required autocomplete="off">
+                            <datalist id="doctors-list">
+                                <option value="James Marry (General Practitioner)">
+                                <option value="Sarah Smith (Pediatrics)">
+                                <option value="Dr. Deepak Kumar Gupta (Neurosurgery)">
+                                <option value="Dr. M M Yusuf (Cardiology)">
+                                <option value="Dr. Mohammed Rehan Sayeed (Robotic Surgery)">
+                                <option value="Dr. Margabandhu Saravanan (Nephrology)">
+                                <option value="Dr. Ranjanee M (Nephrology)">
+                                <option value="Dr. Mammen Chandy (Haematology)">
+                                <option value="Dr. Rashmi Bagga (Obstetrics & Gynaecology)">
+                                <option value="Dr. Harit Chaturvedi (Oncology)">
+                            </datalist>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Hospital</label>
+                        <div class="input-with-icon">
+                            <span class="input-icon">🏥</span>
+                            <input list="hospitals-list" id="appt-hospital" placeholder="Search or select facility..." required autocomplete="off">
+                            <datalist id="hospitals-list">
+                                <option value="" disabled selected>Select facility...</option>
+                                <option value="Salus Center (General Hospital)">Salus Center</option>
+                                <option value="All India Institute of Medical Sciences">All India Institute of Medical Sciences (AIIMS)</option>
+                                <option value="Medanta The Medicity">Medanta The Medicity, Gurugram</option>
+                                <option value="Apollo Hospitals">Apollo Hospitals, Chennai</option>
+                                <option value="Christian Medical College (CMC)">Christian Medical College (CMC), Vellore</option>
+                                <option value="Postgraduate Institute of Medical Education and Research">Postgraduate Institute of Medical Education and Research (PGIMER)</option>
+                                <option value="Tata Memorial Hospital">Tata Memorial Hospital, Mumbai</option>
+                                <option value="Manipal Hospitals">Manipal Hospitals, Bengaluru</option>
+                                <option value="Kokilaben Dhirubhai Ambani Hospital">Kokilaben Dhirubhai Ambani Hospital, Mumbai</option>
+                                <option value="Ultracare (General Hospital)">Max Super Speciality Hospital, New Delhi</option>
+                            </datalist>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Specialty</label>
+                        <div class="input-with-icon">
+                            <span class="input-icon">⚕️</span>
+                            <input list="specialties-list" id="appt-specialty" placeholder="Search or select specialty..." required autocomplete="off">
+                            <datalist id="specialties-list">
+                                <option value="" disabled selected>Select specialty...</option>
+                                <option value="Dermatology">
+                                <option value="Cardiology">
+                                <option value="General Practice">
+                                <option value="Neurosurgeon">
+                                <option value="Ophthalmology"
+                                <option value="Orthopaedics">
+                                <option value="Pediatrics">
+                                <option value="Psychiatry">
+                                <option value="Robotic Surgery">
+                                <option value="Nephrology">
+                                <option value="Haematology">
+                                <option value="Obstetrics & Gynaecology">
+                                <option value="Oncology [Cancer Care]">
+                            </datalist>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Date</label>
+                        <div class="input-with-icon">
+                            <span class="input-icon">📅</span>
+                            <input type="date" id="appt-date" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Time</label>
+                        <div class="input-with-icon">
+                            <span class="input-icon">🕒</span>
+                            <input type="time" id="appt-time" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group reason-group">
+                    <label>Reason for Visit</label>
+                    <textarea id="appt-reason" rows="2" placeholder="Briefly describe the reason for the appointment..."></textarea>
+                    <span class="error-message">Reason for visit is required</span>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" id="btn-cancel-modal" class="btn-ghost">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Appointment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast-notification" class="toast">
+        <span class="toast-icon">✅</span>
+        <span class="toast-message">Appointment booked successfully!</span>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
