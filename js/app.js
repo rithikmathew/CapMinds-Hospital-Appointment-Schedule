@@ -1,5 +1,3 @@
-// js/app.js
-
 document.addEventListener('DOMContentLoaded', () => {
     // --- 1. State & DOM Elements ---
     let currentDate = new Date(); // Automatically uses current date
@@ -15,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const modal = document.getElementById('appointment-modal');
     const form = document.getElementById('appointment-form');
-
 
     // --- 2. Data Management (localStorage) ---
     const STORAGE_KEY = 'capminds_appointments';
@@ -40,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         appointments = appointments.filter(a => a.id !== id);
         localStorage.setItem(STORAGE_KEY, JSON.stringify(appointments));
     }
-
 
     // --- 3. View Switching & Sidebar Logic ---
     function switchView(viewName) {
@@ -133,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // --- STEP 1: VALIDATE ---
         if (!validateForm()) {
-            // Shake the modal for visual feedback [cite: 62]
+            // Shake the modal for visual feedback
             const modalContent = document.querySelector('.modal-content');
             modalContent.classList.add('shake');
             setTimeout(() => modalContent.classList.remove('shake'), 400);
@@ -215,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
             toast.classList.remove('show');
         }, 3500); 
     }
-
 
     // --- 5. Calendar Render Logic ---
     function renderCalendar() {
@@ -340,7 +335,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     // --- 6. Dashboard Render Logic ---
     function renderDashboard(filteredData = null) {
         const tbody = document.getElementById('table-body');
@@ -357,14 +351,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const formatTime = `${String(displayHours).padStart(2, '0')}:${timeParts[1]} ${ampm}`;
 
             const tr = document.createElement('tr');
+            // We add data-label so the mobile CSS knows what name to show for each card row
             tr.innerHTML = `
-                <td class="text-blue">${appt.patient}</td>
-                <td class="text-blue">${appt.doctor}</td>
-                <td>${appt.hospital}</td>
-                <td>${appt.specialty}</td>
-                <td>${appt.date}</td>
-                <td class="text-blue">${formatTime}</td>
-                <td class="text-right">
+                <td data-label="Patient" class="text-blue">${appt.patient}</td>
+                <td data-label="Doctor" class="text-blue">${appt.doctor}</td>
+                <td data-label="Hospital">${appt.hospital}</td>
+                <td data-label="Specialty">${appt.specialty}</td>
+                <td data-label="Date">${appt.date}</td>
+                <td data-label="Time" class="text-blue">${formatTime}</td>
+                <td data-label="Actions" class="text-right">
                     <button class="action-btn" onclick="window.editAppt('${appt.id}')" title="Edit">✏️</button>
                     <button class="action-btn" style="color:var(--danger);" onclick="window.deleteAppt('${appt.id}')" title="Delete">🗑️</button>
                 </td>
