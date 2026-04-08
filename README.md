@@ -7,8 +7,8 @@ A professional, high-performance, and "gorgeous" medical appointment scheduling 
 ---
 
 ## 🚀 Live Demo & Repository
-*   **Live Deployment:** [\[Insert your Netlify/Vercel Link Here\]](https://capminds-hospital-appointment-rithik.netlify.app/)
-*   **GitHub Repository:** [\[Insert your GitHub Link Here\]](https://github.com/rithikmathew/CapMinds-Hospital-Appointment-Schedule.git)
+*   **Live Deployment:** [\[CapMinds Hospital Appoinment Web Created By Rithik Mathew\]](https://capminds-hospital-appointment-rithik.netlify.app/)
+*   **GitHub Repository:** [\[CapMins Hospital Appoinment Web GitHub Repositary Link\]](https://github.com/rithikmathew/CapMinds-Hospital-Appointment-Schedule.git)
 
 ---
 
